@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>How Was Your Day?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #container {
+            background-color: #fff;
+            width: 80%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            color: #555;
+            text-align: center;
+        }
+        #question {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        #yes-no-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        #yesButton {
+            background-color: #5cb85c;
+            color: #fff;
+        }
+        #noButton {
+            background-color: #d9534f;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>How Was Your Day?</h1>
+        <p>Welcome to our website! We hope you had a great day. Please answer a few questions below.</p>
+
+        <div id="question">
+            <p>How did your day go?</p>
+            <input type="radio" id="yesRadio" name="dayWell" value="yes">
+            <label for="yesRadio">Yes</label>
+            <input type="radio" id="noRadio" name="dayWell" value="no">
+            <label for="noRadio">No</label>
+        </div>
+
+        <div id="question">
+            <p>What time did you wake up?</p>
+            <input type="radio" id="morningRadio" name="wakeUpTime" value="6-8 am">
+            <label for="morningRadio">6-8 am</label>
+            <input type="radio" id="lateMorningRadio" name="wakeUpTime" value="9-10 am">
+            <label for="lateMorningRadio">9-10 am</label>
+        </div>
+
+        <div id="question">
+            <p>Did you eat your breakfast?</p>
+            <input type="radio" id="yesBreakfastRadio" name="ateBreakfast" value="yes">
+            <label for="yesBreakfastRadio">Yes</label>
+            <input type="radio" id="noBreakfastRadio" name="ateBreakfast" value="no">
+            <label for="noBreakfastRadio">No</label>
+        </div>
+
+        <div id="yes-no-buttons">
+            <button id="submitButton">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("submitButton").addEventListener("click", function() {
+            // Get selected values
+            var dayWell = document.querySelector('input[name="dayWell"]:checked').value;
+            var wakeUpTime = document.querySelector('input[name="wakeUpTime"]:checked').value;
+            var ateBreakfast = document.querySelector('input[name="ateBreakfast"]:checked').value;
+
+            // Prepare the email body
+            var emailBody = "Answers:\n\n";
+            emailBody += "Did your day go well: " + dayWell + "\n";
+            emailBody += "What time did you wake up: " + wakeUpTime + "\n";
+            emailBody += "Did you eat your breakfast: " + ateBreakfast + "\n";
+
+            // Send the email to the specified email address
+            window.location.href = "mailto:kgcarcasona@gmail.com?subject=Answers%20from%20Website&body=" + encodeURIComponent(emailBody);
+        });
+    </script>
+</body>
+</html>
+
